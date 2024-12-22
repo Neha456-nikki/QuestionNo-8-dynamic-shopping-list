@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial￾scale=1.0">
+  <title>Dynamic Shopping List</title>
+
+</head>
+
+<body>
+<!-- Shopping list container -->
+<div id="shoppingListContainer">
+  <!-- Input for adding items -->
+  <input type="text" id="addItemInput" placeholder="Enter item">
+  <!-- Button to add items -->
+  <button onclick="addItem()">Add Item</button>
+
+  <!-- List of items -->
+
+  <ul id="shoppingList"></ul>
+</div>
+
+
+<script>
+  // Function to add an item to the shopping list
+  function addItem() {
+    // Get the input value
+    const newItemText =
+document.getElementById('addItemInput').value.trim();
+    // Check if the input is not empty
+    if (newItemText !== '') {
+      // Create a new list item element
+      const newItem = document.createElement('li');
+      // Set the text content of the list item
+      newItem.textContent = newItemText;
+      // Create a delete button for the list item
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Delete';
+      deleteButton.onclick = function () {
+        // Remove the list item when the delete button is clicked
+        newItem.remove();
+      };
+      // Append the delete button to the list item
+      newItem.appendChild(deleteButton);
+      // Append the list item to the shopping list
+      document.getElementById('shoppingList').appendChild(newItem);
+      // Clear the input field
+      document.getElementById('addItemInput').value = '';
+      // Focus on the input field for the next item
+      document.getElementById('addItemInput').focus();
+    }
+  }
+
+</script>
+</body>
+</html>
